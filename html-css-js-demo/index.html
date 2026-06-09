@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grace — Graphic Designer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">GamZa.</a>
+      <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#plans">Plans</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero__content">
+        <h1 class="hero__title">Hello there, I am Gamza!</h1>
+        <p class="hero__subtitle">
+            A 8-year-old Welsh Corgi armed with cuteness, loveliness, and an unstoppable passion for food!
+        </p>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__arch">
+          <img
+            src="images/profile.png"
+            alt="Gamza the Corgi"
+            class="hero__photo"
+          >
+        </div>
+        <svg class="hero__star" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 0L26.5 18L44 14L28 24L44 34L26.5 30L24 48L21.5 30L4 34L20 24L4 14L21.5 18L24 0Z" fill="#70d6ff"/>
+        </svg>
+        <a href="#contact" class="hero__badge">Hire me!</a>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="container stats__grid">
+        <div class="stats__item">
+          <span class="stats__number">350+</span>
+          <span class="stats__label">350+ SNACKS TASTED</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number">150+</span>
+          <span class="stats__label">SILLY THINGS DONE</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number">95%</span>
+          <span class="stats__label">LOVED BY PEOPLE</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number">8++</span>
+          <span class="stats__label">YEARS OF LIFE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="container about__grid">
+        <h2 class="about__title">Get to know me more</h2>
+        <div class="about__content">
+          <hr class="about__line">
+          <p class="about__text">
+            I BELIEVE A GOOD BOY IS MORE THAN JUST LOOKING CUTE — IT'S ABOUT STEALING HEARTS, CHASING BALLS, AND MAKING EVERYONE SMILE. WITH OVER 8 YEARS OF PROFESSIONAL CORGI EXPERIENCE, I'VE HELPED BRANDS AND HUMANS INJECT PURE JOY AND STAND OUT IN A CROWDED WORLD.
+
+Wagging for a world of endless possibilities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+      <div class="container services__grid">
+        <div class="services__intro">
+          <svg class="services__star" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 0L22 14L36 12L24 22L36 32L22 28L20 40L18 28L4 32L16 22L4 12L18 14L20 0Z" fill="#ff80bf"/>
+          </svg>
+          <p class="services__tagline">Designing for a world of endless possibilities.</p>
+        </div>
+
+        <div class="services__list-wrap">
+          <h2 class="services__title">My Services</h2>
+
+          <ul class="services__list" id="services-list">
+            <li class="service-item">
+              <button class="service-item__btn" aria-expanded="false">
+                <span>Branding and Identity Design</span>
+                <svg class="service-item__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="service-item__panel">
+                <p>LOGO DESIGN, BARKING GUIDELINES, VISUAL IDENTITY SYSTEMS, AND COMPLETE BRAND STRATEGY FOR HUMANS READY TO MAKE THEIR MARK.</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <button class="service-item__btn" aria-expanded="false">
+                <span>Social Media Graphic</span>
+                <svg class="service-item__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="service-item__panel">
+                <p>EYE-CATCHING POSTS, STORIES, AND CAMPAIGN VISUALS TAILORED FOR INSTAGRAM, TIKTOK, AND SNACK BRAND PAGES.</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <button class="service-item__btn" aria-expanded="false">
+                <span>Web Design</span>
+                <svg class="service-item__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="service-item__panel">
+                <p>RESPONSIVE, MODERN WEBSITE DESIGNS THAT CONVERT VISITORS INTO PUPPY LOVERS WITH STUNNING VISUALS AND INTUITIVE LAYOUTS.</p>
+              </div>
+            </li>
+            <li class="service-item service-item--active">
+              <button class="service-item__btn" aria-expanded="true">
+                <span>UI Design</span>
+                <svg class="service-item__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="service-item__panel">
+                <img
+                  src="images/ui-preview-original.png"
+                  alt="Gamza sleeping — UI Design preview"
+                  class="service-item__preview"
+                >
+                <p>USER INTERFACE DESIGN FOR APPS AND DIGITAL PRODUCTS — CLEAN, FUNCTIONAL, AND PAW-FECTLY CRAFTED FOR THE BEST TREAT-ORDERING EXPERIENCE.</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <button class="service-item__btn" aria-expanded="false">
+                <span>Illustration</span>
+                <svg class="service-item__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="service-item__panel">
+                <p>CUSTOM ILLUSTRATIONS, ICONS, AND VISUAL ASSETS THAT BRING CORGI PERSONALITY AND UNPARALLELED CUTENESS TO YOUR BRAND.</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <button class="service-item__btn" aria-expanded="false">
+                <span>Motion Graphics</span>
+                <svg class="service-item__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="service-item__panel">
+                <p>ANIMATED VISUALS, EXPLAINER VIDEOS, AND DYNAMIC CONTENT THAT CAPTIVATES AUDIENCES AND ELEVATES YOUR TAIL-WAGGING MESSAGE.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact"></footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
