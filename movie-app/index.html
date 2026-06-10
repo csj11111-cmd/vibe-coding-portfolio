@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JINFLIX — 현재 상영작</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a href="#" class="logo" aria-label="JINFLIX">JINFLIX</a>
+      <nav class="nav">
+        <a href="#" class="nav__link nav__link--active">홈</a>
+        <a href="#" class="nav__link">영화</a>
+        <a href="#" class="nav__link">신규 콘텐츠</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero__bg" id="hero-bg"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__label">지금 상영 중</p>
+        <h1 class="hero__title" id="hero-title">불러오는 중...</h1>
+        <p class="hero__overview" id="hero-overview"></p>
+        <div class="hero__meta" id="hero-meta"></div>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="movies">
+        <h2 class="section__title">현재 상영작</h2>
+        <div class="movies__row" id="movies-row">
+          <div class="loading" id="loading">
+            <div class="loading__spinner"></div>
+            <p>영화를 불러오는 중...</p>
+          </div>
+        </div>
+      </section>
+
+      <div id="genres-container"></div>
+
+      <footer class="footer">
+        <p>&copy; 2026 JINFLIX. TMDB API 제공.</p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

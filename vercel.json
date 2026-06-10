@@ -1,6 +1,7 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/html-css-js-demo/index.html" },
-    { "source": "/(.*)", "destination": "/html-css-js-demo/$1" }
+    { "source": "/", "destination": "/movie-app/index.html" },
+    { "source": "/movie-app", "destination": "/movie-app/index.html" },
+    { "source": "/movie-app/(.*)", "destination": "/movie-app/$1" }
   ]
 }
