@@ -2,4 +2,5 @@
 .env.local
 .env.*.local
 .vercel
+html-css-js-demo/.vercel
 node_modules/
