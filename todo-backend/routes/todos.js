@@ -88,4 +88,19 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const todo = await Todo.findByIdAndDelete(req.params.id);
+
+    if (!todo) {
+      res.status(404).json({ error: "할 일을 찾을 수 없습니다." });
+      return;
+    }
+
+    res.status(204).send();
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 module.exports = router;
