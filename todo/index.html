@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>스케줄 To-Do</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header__brand">
+        <span class="header__icon" aria-hidden="true">📅</span>
+        <div>
+          <h1 class="header__title">스케줄 To-Do</h1>
+          <p class="header__subtitle">일정을 추가하고 관리하세요</p>
+        </div>
+      </div>
+      <div class="header__stats" id="statsBar">
+        <div class="stat">
+          <span class="stat__value" id="statTotal">0</span>
+          <span class="stat__label">전체</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value" id="statPending">0</span>
+          <span class="stat__label">예정</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value" id="statDone">0</span>
+          <span class="stat__label">완료</span>
+        </div>
+      </div>
+    </header>
+
+    <div id="permissionBanner" class="alert-banner" hidden>
+      <div class="alert-banner__content">
+        <strong>Firebase 권한 오류 (Permission denied)</strong>
+        <p>
+          앱 코드 문제가 아닙니다. Realtime Database <strong>보안 규칙</strong>이 읽기/쓰기를 막고 있어서
+          할 일이 저장되지 않습니다. Firestore가 아니라 <strong>Realtime Database</strong> 메뉴에서 규칙을 바꿔 주세요.
+        </p>
+        <pre class="alert-banner__code">{
+  "rules": {
+    "todos": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}</pre>
+        <p class="alert-banner__steps">
+          Firebase Console → Build → <strong>Realtime Database</strong> → <strong>규칙</strong> 탭 → 위 내용 붙여넣기 → <strong>게시</strong>
+        </p>
+      </div>
+    </div>
+
+    <main class="main">
+      <section class="panel panel--form" aria-labelledby="formTitle">
+        <h2 class="panel__title" id="formTitle">새 스케줄</h2>
+        <form id="scheduleForm" class="form" novalidate>
+          <input type="hidden" id="editId" value="" />
+
+          <div class="form__row">
+            <label class="form__label" for="title">제목 *</label>
+            <input
+              type="text"
+              id="title"
+              class="form__input"
+              placeholder="예: 팀 미팅"
+              maxlength="100"
+              required
+            />
+          </div>
+
+          <div class="form__grid">
+            <div class="form__row">
+              <label class="form__label" for="date">날짜 *</label>
+              <input type="date" id="date" class="form__input" required />
+            </div>
+            <div class="form__row">
+              <label class="form__label" for="time">시간</label>
+              <input type="time" id="time" class="form__input" />
+            </div>
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" for="category">카테고리</label>
+            <select id="category" class="form__input">
+              <option value="work">업무</option>
+              <option value="personal">개인</option>
+              <option value="study">학습</option>
+              <option value="health">건강</option>
+              <option value="other">기타</option>
+            </select>
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" for="priority">우선순위</label>
+            <select id="priority" class="form__input">
+              <option value="low">낮음</option>
+              <option value="medium" selected>보통</option>
+              <option value="high">높음</option>
+            </select>
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" for="description">메모</label>
+            <textarea
+              id="description"
+              class="form__input form__textarea"
+              placeholder="추가 메모를 입력하세요"
+              maxlength="500"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="form__actions">
+            <button type="submit" class="btn btn--primary" id="submitBtn">추가하기</button>
+            <button type="button" class="btn btn--ghost" id="cancelEditBtn" hidden>취소</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel panel--list" aria-labelledby="listTitle">
+        <div class="list-header">
+          <h2 class="panel__title" id="listTitle">내 스케줄</h2>
+          <div class="toolbar">
+            <div class="search-box">
+              <input
+                type="search"
+                id="searchInput"
+                class="search-box__input"
+                placeholder="검색..."
+                aria-label="스케줄 검색"
+              />
+            </div>
+            <select id="filterStatus" class="toolbar__select" aria-label="상태 필터">
+              <option value="all">전체</option>
+              <option value="pending">예정</option>
+              <option value="done">완료</option>
+            </select>
+            <select id="filterCategory" class="toolbar__select" aria-label="카테고리 필터">
+              <option value="all">모든 카테고리</option>
+              <option value="work">업무</option>
+              <option value="personal">개인</option>
+              <option value="study">학습</option>
+              <option value="health">건강</option>
+              <option value="other">기타</option>
+            </select>
+            <select id="sortBy" class="toolbar__select" aria-label="정렬">
+              <option value="date-asc">날짜 빠른순</option>
+              <option value="date-desc">날짜 느린순</option>
+              <option value="priority">우선순위</option>
+              <option value="title">제목순</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="loadingState" class="loading-state">
+          <span class="loading-state__spinner" aria-hidden="true"></span>
+          <p class="loading-state__text">Firebase에서 할 일을 불러오는 중...</p>
+        </div>
+
+        <ul id="scheduleList" class="schedule-list" aria-live="polite" hidden></ul>
+
+        <div id="emptyState" class="empty-state" hidden>
+          <span class="empty-state__icon" aria-hidden="true">🗓️</span>
+          <p class="empty-state__text">등록된 스케줄이 없습니다.</p>
+          <p class="empty-state__hint">왼쪽 폼에서 새 일정을 추가해 보세요.</p>
+        </div>
+
+        <div class="list-footer">
+          <button type="button" class="btn btn--danger-outline" id="clearDoneBtn">
+            완료 항목 삭제
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <dialog id="confirmDialog" class="dialog">
+    <form method="dialog" class="dialog__content">
+      <p id="confirmMessage" class="dialog__message"></p>
+      <div class="dialog__actions">
+        <button type="button" class="btn btn--ghost" id="confirmCancel">취소</button>
+        <button type="submit" class="btn btn--danger" id="confirmOk">삭제</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
